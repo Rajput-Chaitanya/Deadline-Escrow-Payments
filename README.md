@@ -1,9 +1,23 @@
-# Deadline: backend foundation
-1. Supabase: SQL editor, run `supabase/schema.sql`. Authentication, Providers, Email: turn on "Confirm email". Set Site URL to your Vercel URL. Database, Extensions: enable `pg_cron`, then run the cron line in the schema.
-2. Edit `public/config.js` with your project URL and anon key.
-3. Vercel: import this folder, add the env vars from `.env.example`, deploy. Passport links look like `/p/<token>`.
-4. Test accounts: sign up, confirm the email, then verify in the SQL editor: `select set_verified('<user id>','aadhaar','test1','XXXX 0000'); select set_verified('<user id>','pan','test2','ABC••1234F');`
-   Real Aadhaar/PAN checks need a licensed KYC provider (Digio, Signzy, Karza or DigiLocker). Store only a hash and the masked value, as `set_verified` does.
-## Escrow rule (the core idea)
-Client funds a milestone before work starts. Provider delivers by `due_at`: full payout. Late: deduction of `late_bps_per_day` of that milestone per day late (default 2%/day), capped at `late_cap_bps` (default 20%), returned to the client. Not delivered by `due_at + cutoff_days` (default 10): the full amount goes back to the client. If the client stays silent after delivery for `review_days`, payment releases automatically with the same lateness rule.
-Before real money: set `app_config.simulated_payments=false`, move custody to a licensed bank or payment partner, and call `fund_milestone` only from that partner's webhook.
+# Deadline — Trust. Commit. Deliver.
+
+This is a static, responsive landing page for Deadline with a scroll-driven narrative, interactive Trust Passport, five-pillar selector, evidence context, responsive navigation, and a real `/demo/` route containing the supplied working prototype.
+
+## Run locally
+
+From the project directory:
+
+```bash
+python3 -m http.server 3000 --bind 0.0.0.0
+```
+
+Open `http://localhost:3000/` and use **Launch interactive demo** to open `http://localhost:3000/demo/`.
+
+## Notes
+
+The landing page intentionally distinguishes the current prototype from the intended product. The demo is device-local and its payments are simulated. Payment protection is described as an optional layer that would require appropriately regulated partners. No customer, partnership, pricing, contact, or regulatory claims were added beyond the supplied materials.
+
+The MSME figures retain the definitions and caveats from the founder briefing: ₹8.1 lakh crore is an Economic Survey 2025–26 estimate of delayed payments locked across the MSME sector, while 2,56,892 is the count of applications filed on MSME Samadhaan up to 31 December 2025.
+
+## Deployment
+
+The project is configured as a static website. Serve the repository root as the static output; `index.html`, `public/`, and `demo/` must remain available. The managed Preview runtime uses port 3000.
