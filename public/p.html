@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Deadline Trust Passport</title><script src="/config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>:root{--bg:#f2f6fd;--card:#fff;--ink:#041848;--mut:#58698f;--line:#dce5f5;--navy:#041b57;--blue:#0540ff}
+@media(prefers-color-scheme:dark){:root{--bg:#050c22;--card:#0c1840;--ink:#eaf0ff;--mut:#93a4d4;--line:#1b2c5e;--blue:#4d7dff}}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif}
+.c{width:100%;max-width:420px;background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 12px 40px rgba(4,27,87,.15)}
+.h{background:linear-gradient(115deg,#031447,#041b57 50%,#0540ff 135%);color:#fff;padding:22px}.b{padding:22px}
+.ring{width:110px;height:110px;border-radius:50%;margin:auto;display:grid;place-items:center;background:conic-gradient(var(--blue) calc(var(--p)*1%),var(--line) 0)}
+.ring div{width:84px;height:84px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:30px;font-weight:800}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:600;background:rgba(5,64,255,.14);color:var(--blue);margin:2px}
+.g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;margin-top:16px}.g b{font-size:20px;display:block}.k{font-size:12px;color:var(--mut)}#qr{display:flex;justify-content:center;margin:16px 0 4px}</style></head><body>
+<div class="c"><div class="h"><div class="k" style="color:#bcd0ff">DEADLINE TRUST PASSPORT · VIEW ONLY</div><h2 id="n" style="margin:6px 0 2px">Checking…</h2><div id="s" class="k" style="color:#bcd0ff"></div></div><div class="b" id="b"></div></div>
+<script>
+(async()=>{const t=location.pathname.split('/').pop(),$=i=>document.getElementById(i);
+try{const r=await fetch(DL.url+'/rest/v1/rpc/get_passport',{method:'POST',headers:{apikey:DL.anon,Authorization:'Bearer '+DL.anon,'Content-Type':'application/json'},body:JSON.stringify({p_token:t})}),p=await r.json();
+if(!p){$('n').textContent='Passport not available';$('b').innerHTML='<p class="k">This link has expired or was revoked by its owner. Ask them for a new one.</p>';return}
+const e=x=>String(x==null?'':x).replace(/[<>&"]/g,'');
+$('n').textContent=p.name?e(p.name):'Verified Deadline member';$('s').textContent=p.handle?'@'+e(p.handle)+' · '+e(p.uid)+' · '+e(p.type)+' · '+e(p.region):'';
+let h='<div style="text-align:center"><span class="pill">'+e(p.level)+'</span>'+(p.badges||[]).map(x=>'<span class="pill">'+e(x)+' ✓</span>').join('')+'</div>';
+if('score' in p){h+=p.score==null?'<p class="k" style="text-align:center;margin-top:16px">No completed contracts yet</p>':'<div class="ring" style="--p:'+p.score+';margin-top:16px"><div>'+p.score+'</div></div><div class="k" style="text-align:center;margin-top:6px">On-time delivery score · '+e(p.confidence)+' confidence</div>';
+h+='<div class="g"><div><b>'+p.settled+'</b><span class="k">Settled</span></div><div><b>'+p.on_time+'</b><span class="k">On time</span></div><div><b>'+p.disputes+'</b><span class="k">Disputes</span></div></div>'}
+if(p.member_since)h+='<p class="k" style="text-align:center">Member since '+new Date(p.member_since).getFullYear()+'</p>';
+h+='<div id="qr"></div><div class="k" style="text-align:center">Scan to open this passport · expires '+new Date(p.expires_at).toLocaleDateString('en-IN')+'<br>Verified record from Deadline. Not a guarantee of future performance.</div>';
+$('b').innerHTML=h;new QRCode($('qr'),{text:location.href,width:132,height:132,colorDark:'#041b57',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H})
+}catch(x){$('n').textContent='Could not load passport'}})();
+</script></body></html>
