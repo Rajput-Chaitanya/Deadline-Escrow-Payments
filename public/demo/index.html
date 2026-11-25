@@ -173,6 +173,6 @@ return`<div class="g2"><div class="card"><h2>Verify before you hire</h2><div cla
 function R(){if(!me()){$('#md').innerHTML='';$('#nav').innerHTML='';$('#rs').innerHTML='';$('#app').innerHTML=auth();return}$('#md').innerHTML=modal();$('#dy').textContent='⏱ Day '+S.day;try{localStorage.setItem(KEY,JSON.stringify({...S,md:null}))}catch(e){}$('#nb').textContent='🔔 '+todo().length;$('#rs').innerHTML=['provider','client'].map(r=>`<button class="${S.role==r?'on':''}" data-a="role" data-v="${r}">${r=='provider'?'Freelancer view':'Client view'}</button>`).join('');
 $('#nav').innerHTML=[['home','Home'],['contracts','Contracts'],['trust','Trust ID'],['pay','Payments'],['verify','Verify'],['network','Network'],['profile','Profile']].map(x=>`<button class="${S.tab==x[0]?'on':''}" data-a="tab" data-v="${x[0]}">${x[1]}</button>`).join('');
 $('#app').innerHTML=({home,contracts,trust,pay,verify,network,profile})[S.tab]()+(S.tab=='home'?roadmap()+'<div class="row"><button class="btn o" data-a="reset">Reset demo</button></div>':'')}
-const $=s=>document.querySelector(s);$('#hl').src='/public/deadline-logo.png';$('#fv').href=MARK;R();
+const $=s=>document.querySelector(s);$('#hl').src='/deadline-logo.png';$('#fv').href=MARK;R();
 </script></body></html>
 
