@@ -152,7 +152,10 @@
     .footer-brand .brand-logo{width:165px;height:36px}
     .toast{position:fixed;left:50%;bottom:26px;z-index:70;max-width:calc(100% - 36px);padding:12px 16px;border:1px solid rgba(104,166,255,.3);border-radius:12px;background:rgba(9,18,34,.95);color:#e8f1ff;font-size:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transform:translate(-50%,20px);transition:opacity .25s,transform .25s}.toast.show{opacity:1;transform:translate(-50%,0)}
     @keyframes heroFloat{0%,100%{transform:rotate(3deg) translateY(0)}50%{transform:rotate(1deg) translateY(-10px)}}
-    .cursor-aura,.cursor-orbit{position:fixed;pointer-events:none;z-index:-1;opacity:0;transition:opacity .35s ease;will-change:transform}
+    main{position:relative;z-index:1}
+    .scene-canvas{z-index:-2}
+    .network-canvas{z-index:0}
+    .cursor-aura,.cursor-orbit{position:fixed;pointer-events:none;z-index:0;opacity:0;transition:opacity .35s ease;will-change:transform}
     .cursor-aura{width:560px;height:560px;left:0;top:0;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.18) 0%,rgba(72,135,244,.09) 26%,rgba(94,225,195,.035) 48%,transparent 72%);filter:blur(22px);mix-blend-mode:screen;transform:translate(-50%,-50%)}
     .cursor-orbit{width:180px;height:180px;left:0;top:0;border:1px solid rgba(116,207,255,.22);border-radius:50%;box-shadow:0 0 48px rgba(59,130,246,.12),inset 0 0 28px rgba(115,224,188,.07);transform:translate(-50%,-50%)}
     body.pointer-active .cursor-aura,body.pointer-active .cursor-orbit{opacity:1}
@@ -164,6 +167,11 @@
     .visual-ledger{padding:150px 0 165px;background:linear-gradient(180deg,rgba(7,11,23,0),rgba(13,27,52,.56) 22%,rgba(7,11,23,0));overflow:hidden}
     .ledger-head{display:flex;align-items:end;justify-content:space-between;gap:48px;margin-bottom:46px}.ledger-head h2{font-family:var(--display);font-size:clamp(42px,6vw,78px);letter-spacing:-.065em;line-height:.94;margin-top:18px;max-width:9ch}.ledger-head p{max-width:370px;color:var(--muted);font-size:15px;line-height:1.7}
     .ledger-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:14px;align-items:stretch}.ledger-card{position:relative;min-height:310px;overflow:hidden;border:1px solid rgba(156,183,226,.18);border-radius:22px;background:rgba(15,24,43,.72);box-shadow:0 24px 70px rgba(0,0,0,.22)}.ledger-card-wide{min-height:390px}.ledger-card img,.ledger-card video{display:block;width:100%;height:100%;min-height:310px;object-fit:cover;opacity:.92;transition:transform .7s cubic-bezier(.22,.7,.2,1),filter .7s ease}.ledger-card-wide img{min-height:390px}.ledger-card:hover img,.ledger-card:hover video{transform:scale(1.035);filter:saturate(1.12) contrast(1.04)}.ledger-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(4,8,18,.86) 100%);pointer-events:none}.ledger-card figcaption{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;display:grid;gap:6px}.ledger-card figcaption span{color:var(--cyan);font-size:10px;letter-spacing:.15em;text-transform:uppercase}.ledger-card figcaption b{font-family:var(--display);font-size:21px;letter-spacing:-.035em}.ledger-motion-card video{object-position:center;filter:saturate(.85)}
+    .hero-copy,.hero-visual{will-change:transform,opacity}.hero-copy{transition:transform .12s linear,opacity .12s linear}
+    .hero-visual{transition:transform .12s linear}
+    .journey-progress{position:absolute;left:12.5%;right:12.5%;top:19px;height:2px;border-radius:999px;background:rgba(104,166,255,.15);overflow:hidden;z-index:0}.journey-progress i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green));box-shadow:0 0 16px rgba(104,166,255,.7);transition:width .12s linear}.journey-step{position:relative;z-index:1}
+    .ledger-card img,.ledger-card video{will-change:transform}.ledger-card:nth-child(1) img{transform:translateY(var(--ledger-shift-a,0px)) scale(1.035)}.ledger-card:nth-child(2) img{transform:translateY(var(--ledger-shift-b,0px)) scale(1.035)}.ledger-card:nth-child(3) video{transform:translateY(var(--ledger-shift-c,0px)) scale(1.035)}
+    @media(max-width:720px){.journey-progress{left:40px;right:auto;top:39px;bottom:39px;width:2px;height:auto}.journey-progress i{width:100%;height:0;transition:height .12s linear}.journey:before{z-index:0}}
     @media(max-width:980px){.nav-links{gap:14px}.nav-links a{font-size:11px}.hero .wrap{grid-template-columns:1fr;gap:20px}.hero{padding-top:145px}.hero-copy{padding-top:0}.hero h1{max-width:9ch}.hero-visual{min-height:420px;margin-top:-30px}.problem-grid{grid-template-columns:1fr;gap:16px}.splitter{height:70px}.splitter:before{display:none}.splitter-line{width:45%;transform:rotate(90deg)}.scale-layout,.demo-layout{grid-template-columns:1fr;gap:54px}.solution-head,.workflow-head{display:block}.solution-side,.workflow-head p{margin-top:24px}.pillars-layout{grid-template-columns:1fr;gap:35px}.pillar-list{position:relative;top:auto;grid-template-columns:repeat(5,1fr);gap:6px}.pillar-button{display:block;padding:12px 9px;text-align:center}.pillar-no{margin-bottom:6px}.pillar-button span{display:none}.pillar-stage{min-height:530px}.journey-step{padding:0 8px}.browser{transform:none}}
     @media(max-width:980px){.ledger-grid{grid-template-columns:1fr 1fr}.ledger-card-wide{grid-column:1/-1}.ledger-head{display:block}.ledger-head p{margin-top:22px;max-width:520px}}
     @media(max-width:720px){.site-nav{top:10px;width:calc(100% - 20px);padding:9px 10px 9px 13px}.nav-links{display:none;position:absolute;left:0;right:0;top:55px;flex-direction:column;align-items:stretch;padding:10px;border:1px solid var(--line);border-radius:15px;background:rgba(7,11,23,.96);box-shadow:var(--shadow)}.nav-links.open{display:flex}.nav-links a{padding:11px 9px;font-size:12px}.nav-cta{display:none}.menu-toggle{display:block}.wrap{width:min(calc(100% - 34px),var(--max))}.hero{padding:123px 0 80px}.hero h1{font-size:clamp(54px,15vw,85px)}.hero-lede{font-size:15px;margin-top:23px}.hero-visual{min-height:365px;margin-top:-15px}.hero-visual:before{width:330px;height:330px}.commitment{padding:21px;transform:rotate(1deg)}.commitment-path{height:145px}.commitment-foot strong{font-size:18px}.section-kicker{margin-bottom:34px}.section-kicker h2{font-size:clamp(41px,12vw,64px)}.section-kicker p{font-size:15px}.problem,.scale,.solution,.pillars,.workflow,.demo,.vision{padding:105px 0 120px}.side-card{min-height:auto}.scale-layout{gap:35px}.stat{min-height:165px;padding:20px}.stat-number{font-size:clamp(31px,9vw,47px)}.solution-head{margin-bottom:45px}.passport-stage{min-height:450px}.passport{min-height:470px;padding:20px}.passport:after{left:33px}.passport-content{grid-template-columns:1fr;gap:22px;padding:34px 0 25px 19px}.passport-avatar{width:75px;height:75px;font-size:22px}.passport-name{font-size:25px}.passport-fields{grid-template-columns:1fr 1fr;margin-top:22px}.passport-callout{right:3%;top:3%;font-size:9px}.passport-rail{display:none}.pillar-list{grid-template-columns:repeat(5,1fr)}.pillar-button{padding:10px 4px}.pillar-button strong{font-size:10px;line-height:1.25}.pillar-stage{padding:25px;min-height:500px}.pillar-stage h3{margin-top:55px;font-size:53px}.pillar-visual{right:17px;bottom:59px;transform:scale(.78);transform-origin:bottom right}.journey{grid-template-columns:1fr;gap:34px}.journey:before{top:39px;bottom:39px;left:50%;right:auto;width:1px;height:auto;background:linear-gradient(var(--blue),var(--cyan),rgba(115,224,188,.85))}.journey-step{display:grid;grid-template-columns:80px 1fr;column-gap:22px;text-align:left;align-items:center}.journey-dot{grid-row:span 3;margin:0}.journey-step p,.journey-step small{margin-left:0}.journey-step p{max-width:none}.journey-step small{max-width:none}.browser-window{grid-template-columns:92px 1fr}.mock-main{padding:18px 14px}.mock-sidebar{padding:17px 8px}.mock-cards{grid-template-columns:1fr}.mock-card.wide{grid-column:auto}.footer{grid-template-columns:1fr 1fr;gap:35px;margin-top:105px;padding-top:54px}.footer-brand{grid-column:1/-1}.footer-bottom{display:block}.footer-bottom span{display:block}.footer-bottom span+span{margin-top:8px}}
@@ -323,6 +331,7 @@
       <div class="wrap">
         <div class="workflow-head"><div data-reveal><span class="eyebrow">From promise to proof</span><h2 id="workflow-title">A record is built in motion.</h2></div><p data-reveal style="--delay:120ms">Both parties move through the same visible sequence. The final outcome updates the Passport only when the engagement reaches a clear state.</p></div>
         <div class="journey">
+          <div class="journey-progress" aria-hidden="true"><i id="journeyProgress"></i></div>
           <article class="journey-step" data-reveal><div class="journey-dot">01</div><h3>AGREE</h3><p>Scope, deliverables, dates, acceptance criteria.</p><small>Versioned commitment accepted by both parties.</small></article>
           <article class="journey-step" data-reveal style="--delay:90ms"><div class="journey-dot">02</div><h3>TRACK</h3><p>Milestones are updated and evidence is submitted.</p><small>Timestamped submissions, links, comments.</small></article>
           <article class="journey-step" data-reveal style="--delay:180ms"><div class="journey-dot">03</div><h3>VERIFY</h3><p>Approve, request revision, extend, or raise a documented issue.</p><small>Outcome and response trail stays visible.</small></article>
@@ -452,11 +461,12 @@
 
       const aura = $('.cursor-aura');
       const orbit = $('.cursor-orbit');
-      let pointerX = window.innerWidth * .72, pointerY = window.innerHeight * .35;
-      if (!reduceMotion && window.matchMedia('(pointer:fine)').matches) {
-        const moveAura = event => { pointerX = event.clientX; pointerY = event.clientY; document.body.classList.add('pointer-active'); aura.style.transform = `translate(${pointerX - 280}px,${pointerY - 280}px)`; orbit.style.transform = `translate(${pointerX - 90}px,${pointerY - 90}px)`; };
+      let pointerX = window.innerWidth * .72, pointerY = window.innerHeight * .35, auraX = pointerX, auraY = pointerY, pointerRaf = 0;
+      if (!reduceMotion && window.matchMedia('(pointer:fine)').matches && aura && orbit) {
+        const moveAura = event => { pointerX = event.clientX; pointerY = event.clientY; document.body.classList.add('pointer-active'); if (!pointerRaf) pointerRaf = requestAnimationFrame(animatePointer); };
+        const animatePointer = () => { auraX += (pointerX - auraX) * .14; auraY += (pointerY - auraY) * .14; aura.style.transform = `translate(${auraX - 280}px,${auraY - 280}px)`; orbit.style.transform = `translate(${auraX - 90}px,${auraY - 90}px) rotate(${auraX * .025}deg)`; pointerRaf = requestAnimationFrame(animatePointer); };
         window.addEventListener('pointermove', moveAura, {passive:true});
-        window.addEventListener('pointerleave', () => document.body.classList.remove('pointer-active'));
+        window.addEventListener('mouseout', event => { if (!event.relatedTarget) document.body.classList.remove('pointer-active'); });
         window.addEventListener('blur', () => document.body.classList.remove('pointer-active'));
       }
       const passport = $('#passport');
@@ -479,6 +489,39 @@
       const statGrid = $('.stat-grid');
       if (statGrid) new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { animateCounters(); e.target.closest('section')?.querySelectorAll('[data-count]').forEach(x=>x.dataset.counted='true'); } }), {threshold:.3}).observe(statGrid);
 
+      const hero = $('#overview');
+      const heroCopy = $('.hero-copy');
+      const heroVisual = $('.hero-visual');
+      const workflow = $('#workflow');
+      const journeyProgress = $('#journeyProgress');
+      const ledgerCards = $$('.ledger-card');
+      let scrollSceneRaf = 0;
+      const clamp = (value, min=0, max=1) => Math.min(max, Math.max(min, value));
+      function updateScrollScene() {
+        scrollSceneRaf = 0;
+        if (reduceMotion) return;
+        const y = window.scrollY;
+        if (hero && heroCopy && heroVisual) {
+          const heroProgress = clamp(y / Math.max(1, hero.offsetHeight * .82));
+          heroCopy.style.transform = `translate3d(0,${heroProgress * -38}px,0)`;
+          heroCopy.style.opacity = String(1 - heroProgress * .48);
+          heroVisual.style.transform = `translate3d(0,${heroProgress * 52}px,0) rotate(${heroProgress * -.7}deg)`;
+        }
+        if (workflow && journeyProgress) {
+          const r = workflow.getBoundingClientRect();
+          const p = clamp((window.innerHeight * .68 - r.top) / Math.max(1, r.height * .66));
+          if (window.innerWidth <= 720) journeyProgress.style.height = `${p * 100}%`;
+          else journeyProgress.style.width = `${p * 100}%`;
+        }
+        ledgerCards.forEach((card,index) => {
+          const r = card.getBoundingClientRect();
+          const centerOffset = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+          const shift = Math.max(-18, Math.min(18, centerOffset * -22));
+          card.style.setProperty(`--ledger-shift-${['a','b','c'][index] || 'a'}`, `${shift}px`);
+        });
+      }
+      window.addEventListener('scroll', () => { if (!scrollSceneRaf) scrollSceneRaf = requestAnimationFrame(updateScrollScene); }, {passive:true});
+      window.addEventListener('resize', updateScrollScene);
       const scene = $('#sceneCanvas');
       const net = $('#networkCanvas');
       const ctx = scene.getContext('2d'); const nctx = net.getContext('2d');
@@ -490,6 +533,7 @@
         nodes = Array.from({length:Math.min(50, Math.floor(window.innerWidth/22))}, (_,i) => ({x:.42+Math.random()*.58,y:.14+Math.random()*.72,r:Math.random()*2+1,p:Math.random(),i}));
       }
       resizeCanvas(); window.addEventListener('resize', resizeCanvas); window.addEventListener('scroll', () => {scrollY = window.scrollY}, {passive:true});
+      updateScrollScene();
       function drawScene(t) {
         if (!reduceMotion) {
           ctx.clearRect(0,0,width,height);
