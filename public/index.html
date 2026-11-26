@@ -152,14 +152,29 @@
     .footer-brand .brand-logo{width:165px;height:36px}
     .toast{position:fixed;left:50%;bottom:26px;z-index:70;max-width:calc(100% - 36px);padding:12px 16px;border:1px solid rgba(104,166,255,.3);border-radius:12px;background:rgba(9,18,34,.95);color:#e8f1ff;font-size:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transform:translate(-50%,20px);transition:opacity .25s,transform .25s}.toast.show{opacity:1;transform:translate(-50%,0)}
     @keyframes heroFloat{0%,100%{transform:rotate(3deg) translateY(0)}50%{transform:rotate(1deg) translateY(-10px)}}
+    .cursor-aura,.cursor-orbit{position:fixed;pointer-events:none;z-index:-1;opacity:0;transition:opacity .35s ease;will-change:transform}
+    .cursor-aura{width:560px;height:560px;left:0;top:0;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.18) 0%,rgba(72,135,244,.09) 26%,rgba(94,225,195,.035) 48%,transparent 72%);filter:blur(22px);mix-blend-mode:screen;transform:translate(-50%,-50%)}
+    .cursor-orbit{width:180px;height:180px;left:0;top:0;border:1px solid rgba(116,207,255,.22);border-radius:50%;box-shadow:0 0 48px rgba(59,130,246,.12),inset 0 0 28px rgba(115,224,188,.07);transform:translate(-50%,-50%)}
+    body.pointer-active .cursor-aura,body.pointer-active .cursor-orbit{opacity:1}
+    .hero-motion{position:relative;overflow:hidden;min-height:150px;margin:0 0 16px;border:1px solid rgba(156,183,226,.22);border-radius:20px;background:rgba(12,22,42,.72);box-shadow:0 18px 55px rgba(0,0,0,.28);isolation:isolate}
+    .hero-motion:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,8,18,.68),transparent 36%,rgba(5,8,18,.08));pointer-events:none}
+    .hero-motion-video{display:block;width:100%;height:180px;object-fit:cover;opacity:.88;filter:saturate(.88) contrast(1.02)}
+    .hero-motion-caption{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;display:flex;justify-content:space-between;align-items:end;gap:14px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+    .hero-motion-caption span,.hero-motion-caption b{font-size:10px;letter-spacing:.12em;text-transform:uppercase}.hero-motion-caption b{font-size:12px;letter-spacing:.02em;text-transform:none}
+    .visual-ledger{padding:150px 0 165px;background:linear-gradient(180deg,rgba(7,11,23,0),rgba(13,27,52,.56) 22%,rgba(7,11,23,0));overflow:hidden}
+    .ledger-head{display:flex;align-items:end;justify-content:space-between;gap:48px;margin-bottom:46px}.ledger-head h2{font-family:var(--display);font-size:clamp(42px,6vw,78px);letter-spacing:-.065em;line-height:.94;margin-top:18px;max-width:9ch}.ledger-head p{max-width:370px;color:var(--muted);font-size:15px;line-height:1.7}
+    .ledger-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:14px;align-items:stretch}.ledger-card{position:relative;min-height:310px;overflow:hidden;border:1px solid rgba(156,183,226,.18);border-radius:22px;background:rgba(15,24,43,.72);box-shadow:0 24px 70px rgba(0,0,0,.22)}.ledger-card-wide{min-height:390px}.ledger-card img,.ledger-card video{display:block;width:100%;height:100%;min-height:310px;object-fit:cover;opacity:.92;transition:transform .7s cubic-bezier(.22,.7,.2,1),filter .7s ease}.ledger-card-wide img{min-height:390px}.ledger-card:hover img,.ledger-card:hover video{transform:scale(1.035);filter:saturate(1.12) contrast(1.04)}.ledger-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(4,8,18,.86) 100%);pointer-events:none}.ledger-card figcaption{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;display:grid;gap:6px}.ledger-card figcaption span{color:var(--cyan);font-size:10px;letter-spacing:.15em;text-transform:uppercase}.ledger-card figcaption b{font-family:var(--display);font-size:21px;letter-spacing:-.035em}.ledger-motion-card video{object-position:center;filter:saturate(.85)}
     @media(max-width:980px){.nav-links{gap:14px}.nav-links a{font-size:11px}.hero .wrap{grid-template-columns:1fr;gap:20px}.hero{padding-top:145px}.hero-copy{padding-top:0}.hero h1{max-width:9ch}.hero-visual{min-height:420px;margin-top:-30px}.problem-grid{grid-template-columns:1fr;gap:16px}.splitter{height:70px}.splitter:before{display:none}.splitter-line{width:45%;transform:rotate(90deg)}.scale-layout,.demo-layout{grid-template-columns:1fr;gap:54px}.solution-head,.workflow-head{display:block}.solution-side,.workflow-head p{margin-top:24px}.pillars-layout{grid-template-columns:1fr;gap:35px}.pillar-list{position:relative;top:auto;grid-template-columns:repeat(5,1fr);gap:6px}.pillar-button{display:block;padding:12px 9px;text-align:center}.pillar-no{margin-bottom:6px}.pillar-button span{display:none}.pillar-stage{min-height:530px}.journey-step{padding:0 8px}.browser{transform:none}}
+    @media(max-width:980px){.ledger-grid{grid-template-columns:1fr 1fr}.ledger-card-wide{grid-column:1/-1}.ledger-head{display:block}.ledger-head p{margin-top:22px;max-width:520px}}
     @media(max-width:720px){.site-nav{top:10px;width:calc(100% - 20px);padding:9px 10px 9px 13px}.nav-links{display:none;position:absolute;left:0;right:0;top:55px;flex-direction:column;align-items:stretch;padding:10px;border:1px solid var(--line);border-radius:15px;background:rgba(7,11,23,.96);box-shadow:var(--shadow)}.nav-links.open{display:flex}.nav-links a{padding:11px 9px;font-size:12px}.nav-cta{display:none}.menu-toggle{display:block}.wrap{width:min(calc(100% - 34px),var(--max))}.hero{padding:123px 0 80px}.hero h1{font-size:clamp(54px,15vw,85px)}.hero-lede{font-size:15px;margin-top:23px}.hero-visual{min-height:365px;margin-top:-15px}.hero-visual:before{width:330px;height:330px}.commitment{padding:21px;transform:rotate(1deg)}.commitment-path{height:145px}.commitment-foot strong{font-size:18px}.section-kicker{margin-bottom:34px}.section-kicker h2{font-size:clamp(41px,12vw,64px)}.section-kicker p{font-size:15px}.problem,.scale,.solution,.pillars,.workflow,.demo,.vision{padding:105px 0 120px}.side-card{min-height:auto}.scale-layout{gap:35px}.stat{min-height:165px;padding:20px}.stat-number{font-size:clamp(31px,9vw,47px)}.solution-head{margin-bottom:45px}.passport-stage{min-height:450px}.passport{min-height:470px;padding:20px}.passport:after{left:33px}.passport-content{grid-template-columns:1fr;gap:22px;padding:34px 0 25px 19px}.passport-avatar{width:75px;height:75px;font-size:22px}.passport-name{font-size:25px}.passport-fields{grid-template-columns:1fr 1fr;margin-top:22px}.passport-callout{right:3%;top:3%;font-size:9px}.passport-rail{display:none}.pillar-list{grid-template-columns:repeat(5,1fr)}.pillar-button{padding:10px 4px}.pillar-button strong{font-size:10px;line-height:1.25}.pillar-stage{padding:25px;min-height:500px}.pillar-stage h3{margin-top:55px;font-size:53px}.pillar-visual{right:17px;bottom:59px;transform:scale(.78);transform-origin:bottom right}.journey{grid-template-columns:1fr;gap:34px}.journey:before{top:39px;bottom:39px;left:50%;right:auto;width:1px;height:auto;background:linear-gradient(var(--blue),var(--cyan),rgba(115,224,188,.85))}.journey-step{display:grid;grid-template-columns:80px 1fr;column-gap:22px;text-align:left;align-items:center}.journey-dot{grid-row:span 3;margin:0}.journey-step p,.journey-step small{margin-left:0}.journey-step p{max-width:none}.journey-step small{max-width:none}.browser-window{grid-template-columns:92px 1fr}.mock-main{padding:18px 14px}.mock-sidebar{padding:17px 8px}.mock-cards{grid-template-columns:1fr}.mock-card.wide{grid-column:auto}.footer{grid-template-columns:1fr 1fr;gap:35px;margin-top:105px;padding-top:54px}.footer-brand{grid-column:1/-1}.footer-bottom{display:block}.footer-bottom span{display:block}.footer-bottom span+span{margin-top:8px}}
-    @media(max-width:480px){.brand-logo{width:122px;height:28px;padding:3px 6px}.footer-brand .brand-logo{width:155px;height:34px}.hero .btn-row{display:grid;grid-template-columns:1fr}.hero .btn{width:100%}.hero-scroll{display:none}.hero-visual{min-height:315px}.commitment-head{margin-bottom:20px}.commitment-path{margin-inline:0}.path-label{font-size:8px}.deadline-pin{left:66%;font-size:8px}.deadline-pin b{font-size:14px}.stat-grid{grid-template-columns:1fr}.stat{min-height:145px}.passport-stage{min-height:480px}.passport-fields{gap:7px}.passport-field{min-height:60px;padding:9px}.passport-field b{font-size:10px}.pillar-list{gap:3px}.pillar-button.active{box-shadow:inset 0 2px var(--blue)}.pillar-stage h3{font-size:48px}.pillar-visual{opacity:.5;right:-8px;bottom:25px}.pillar-legend{left:24px;bottom:22px}.demo-copy h2,.workflow-head h2{font-size:clamp(43px,13vw,61px)}.mock-sidebar{display:none}.browser-window{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.footer-brand{grid-column:auto}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scene-canvas,.network-canvas{display:none}[data-reveal]{opacity:1;transform:none;transition:none}.commitment{animation:none}.btn,.passport{transition:none}}
+    @media(max-width:480px){.hero-motion-video{height:155px}.hero-motion-caption{display:grid;gap:3px}.visual-ledger{padding:110px 0 120px}.ledger-grid{grid-template-columns:1fr}.ledger-card-wide{grid-column:auto}.ledger-card,.ledger-card-wide,.ledger-card img,.ledger-card video,.ledger-card-wide img{min-height:270px}.brand-logo{width:122px;height:28px;padding:3px 6px}.footer-brand .brand-logo{width:155px;height:34px}.hero .btn-row{display:grid;grid-template-columns:1fr}.hero .btn{width:100%}.hero-scroll{display:none}.hero-visual{min-height:315px}.commitment-head{margin-bottom:20px}.commitment-path{margin-inline:0}.path-label{font-size:8px}.deadline-pin{left:66%;font-size:8px}.deadline-pin b{font-size:14px}.stat-grid{grid-template-columns:1fr}.stat{min-height:145px}.passport-stage{min-height:480px}.passport-fields{gap:7px}.passport-field{min-height:60px;padding:9px}.passport-field b{font-size:10px}.pillar-list{gap:3px}.pillar-button.active{box-shadow:inset 0 2px var(--blue)}.pillar-stage h3{font-size:48px}.pillar-visual{opacity:.5;right:-8px;bottom:25px}.pillar-legend{left:24px;bottom:22px}.demo-copy h2,.workflow-head h2{font-size:clamp(43px,13vw,61px)}.mock-sidebar{display:none}.browser-window{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.footer-brand{grid-column:auto}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scene-canvas,.network-canvas,.cursor-aura,.cursor-orbit{display:none}[data-reveal]{opacity:1;transform:none;transition:none}.commitment{animation:none}.btn,.passport{transition:none}}
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor-aura" aria-hidden="true"></div>
+  <div class="cursor-orbit" aria-hidden="true"></div>
   <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
   <canvas class="scene-canvas" id="sceneCanvas" aria-hidden="true"></canvas>
   <header class="site-nav" aria-label="Primary navigation">
@@ -190,7 +205,13 @@
           <p class="hero-note" data-reveal style="--delay:380ms"><i></i>Trust. Commit. Deliver.</p>
         </div>
         <div class="hero-visual" aria-label="A commitment moving from promise to verified record">
-          <div class="commitment" data-reveal style="--delay:260ms">
+          <div class="hero-motion" data-reveal style="--delay:220ms">
+            <video class="hero-motion-video" autoplay muted loop playsinline preload="metadata" poster="/deadline-hero-vector.png" aria-label="Abstract two-dimensional Deadline trust motion graphic">
+              <source src="/deadline-kinetic-type.mp4" type="video/mp4" />
+            </video>
+            <div class="hero-motion-caption"><span>Motion study / 01</span><b>Promise → proof</b></div>
+          </div>
+          <div class="commitment" data-reveal style="--delay:300ms">
             <div class="commitment-head"><b>Engagement / 0248</b><span class="status-dot">structured record</span></div>
             <div class="commitment-path">
               <span class="path-node">01</span><span class="path-node">02</span><span class="path-node">03</span>
@@ -310,6 +331,30 @@
       </div>
     </section>
 
+    <section class="visual-ledger" id="visual-ledger" aria-labelledby="visual-ledger-title">
+      <div class="wrap">
+        <div class="ledger-head" data-reveal>
+          <div><span class="eyebrow">A visual language for trust</span><h2 id="visual-ledger-title">Make the invisible legible.</h2></div>
+          <p>Deadline is designed to make commitments, evidence, and outcomes feel as clear as a well-kept record — not louder than the work itself.</p>
+        </div>
+        <div class="ledger-grid">
+          <figure class="ledger-card ledger-card-wide" data-reveal style="--delay:80ms">
+            <img src="/deadline-evidence-vector.png" alt="Flat vector illustration of a connected evidence and accountability system" loading="lazy" />
+            <figcaption><span>01 / evidence</span><b>What happened has a shape.</b></figcaption>
+          </figure>
+          <figure class="ledger-card" data-reveal style="--delay:150ms">
+            <img src="/deadline-hero-vector.png" alt="Flat vector illustration of a trust passport" loading="lazy" />
+            <figcaption><span>02 / identity</span><b>Trust can travel with consent.</b></figcaption>
+          </figure>
+          <figure class="ledger-card ledger-motion-card" data-reveal style="--delay:220ms">
+            <video autoplay muted loop playsinline preload="metadata" poster="/deadline-network-vector.png" aria-label="Animated Deadline logo reveal">
+              <source src="/deadline-logo-reveal.mp4" type="video/mp4" />
+            </video>
+            <figcaption><span>03 / commitment</span><b>A record can move.</b></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
     <section class="demo" id="demo" aria-labelledby="demo-title">
       <div class="wrap demo-layout">
         <div class="demo-copy"><span class="eyebrow" data-reveal>See what exists today</span><h2 id="demo-title" data-reveal style="--delay:80ms">Explore the working prototype.</h2><p data-reveal style="--delay:160ms">The supplied Deadline demo is a real, interactive, device-local prototype. Explore its contract, evidence, verification, network, profile, and simulated payment flows without mistaking the simulation for live financial infrastructure.</p><div class="btn-row" data-reveal style="--delay:240ms"><a class="btn btn-primary" href="/demo/">Launch interactive demo <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#vision">See the vision <span aria-hidden="true">↓</span></a></div><span class="demo-badge" data-reveal style="--delay:320ms">Prototype note: payments are simulated; real safeguards would require regulated partners.</span></div>
@@ -405,6 +450,15 @@
         if (!reduceMotion) { pillarStage.animate([{opacity:.5,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:360,easing:'cubic-bezier(.22,.7,.2,1)'}); }
       }));
 
+      const aura = $('.cursor-aura');
+      const orbit = $('.cursor-orbit');
+      let pointerX = window.innerWidth * .72, pointerY = window.innerHeight * .35;
+      if (!reduceMotion && window.matchMedia('(pointer:fine)').matches) {
+        const moveAura = event => { pointerX = event.clientX; pointerY = event.clientY; document.body.classList.add('pointer-active'); aura.style.transform = `translate(${pointerX - 280}px,${pointerY - 280}px)`; orbit.style.transform = `translate(${pointerX - 90}px,${pointerY - 90}px)`; };
+        window.addEventListener('pointermove', moveAura, {passive:true});
+        window.addEventListener('pointerleave', () => document.body.classList.remove('pointer-active'));
+        window.addEventListener('blur', () => document.body.classList.remove('pointer-active'));
+      }
       const passport = $('#passport');
       if (!reduceMotion && passport) {
         passport.addEventListener('pointermove', event => { const r = passport.getBoundingClientRect(); const x = (event.clientX - r.left) / r.width - .5; const y = (event.clientY - r.top) / r.height - .5; passport.style.transform = `rotateX(${y * -5}deg) rotateY(${x * 7}deg)`; });
